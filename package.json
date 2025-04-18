@@ -1,0 +1,16 @@
+{
+  "name": "notion-vercel-proxy",
+  "version": "1.0.0",
+  "description": "Secure Notion API proxy for GPT and client integrations",
+  "main": "index.js",
+  "scripts": {
+    "start": "node api/health.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=14.x"
+  },
+  "license": "MIT"
+}
