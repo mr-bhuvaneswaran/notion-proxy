@@ -9,7 +9,7 @@
     "rewrites": [
         {
             "source": "/api/:path*",
-            "destination": "https://api.notion.com/v1/:path*"
+            "destination": "https://api.notion.com/v1/users/me"
         }
     ],
     "headers": [
