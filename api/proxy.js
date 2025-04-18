@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
 
   // Strip `/api/proxy.js` from the beginning of the request path
   const notionPath = incomingPath.replace(/^\/api\/proxy/, '') || '/';
-  const targetUrl = `https://api.notion.com/v1${notionPath}`;
+  const targetUrl = `http://api.notion.com/v1${notionPath}`;
 
   console.log("Proxying to:", targetUrl);
 console.log("body to:", body);
