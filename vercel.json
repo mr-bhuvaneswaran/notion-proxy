@@ -12,7 +12,7 @@
             "dest": "/api/proxy.js"
         }
     ],
-    "rewrites": [
+    "redirects": [
         {
             "source": "/proxy/:match*",
             "destination": "https://api.notion.com/v1/:match*"
