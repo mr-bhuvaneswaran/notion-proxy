@@ -11,5 +11,11 @@
           "src": "/api/proxy/(.*)",
           "dest": "/api/proxy.js"
         }
-    ]
+    ],
+  "rewrites": [
+    {
+      "source": "/proxy/:match*",
+      "destination": "https://api.notion.com/v1/:match*"
+    }
+  ] 
 }
