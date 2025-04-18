@@ -6,10 +6,31 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [
+  {
+  "rewrites": [
     {
-      "src": "/api/proxy/(.*)",
-      "dest": "/api/proxy.js"
+      "source": "/:path*",
+      "destination": "https://api.notion.com/v1/:path*"
+    }
+  ],
+    "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Authorization",
+          "value": "Bearer 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"
+        },
+        {
+          "key": "Notion-Version",
+          "value": "2022-06-28"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ]
     }
   ]
+}
 }
