@@ -12,6 +12,7 @@ module.exports = async (req, res) => {
 
   console.log("Proxying to:", targetUrl);
 console.log("body to:", body);
+console.log("NOTION_TOKEN to:", NOTION_TOKEN);
 
 
   try {
@@ -26,6 +27,9 @@ console.log("body to:", body);
       },
       data: body
     });
+
+    console.log("response to:", response.data);
+
 
     res.status(response.status).json(response.data);
   } catch (error) {
