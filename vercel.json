@@ -1,8 +1,15 @@
 {
-    "rewrites": [
+    "version": 2,
+    "builds": [
         {
-            "source": "/api/:path*",
-            "destination": "https://api.notion.com/v1/users/me"
+            "src": "api/proxy.js",
+            "use": "@vercel/node"
+        }
+    ],
+     "routes": [
+        {
+          "src": "/api/proxy/(.*)",
+          "dest": "/api/proxy.js"
         }
     ]
 }
