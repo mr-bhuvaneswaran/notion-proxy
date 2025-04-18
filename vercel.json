@@ -9,7 +9,7 @@
     "redirects": [
         {
             "source": "/api/proxy/(.*)",
-            "destination": "/api/proxy.js"
+            "destination": "/api/proxy.js/(.*)"
         },
         {
             "source": "/proxy/:match*",
