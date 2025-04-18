@@ -6,13 +6,11 @@
             "use": "@vercel/node"
         }
     ],
-    "routes": [
-        {
-            "src": "/api/proxy/(.*)",
-            "dest": "/api/proxy.js"
-        }
-    ],
     "redirects": [
+        {
+            "source": "/api/proxy/(.*)",
+            "destination": "/api/proxy.js"
+        }
         {
             "source": "/proxy/:match*",
             "destination": "https://api.notion.com/v1/:match*"
