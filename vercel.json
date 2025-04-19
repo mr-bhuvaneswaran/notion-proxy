@@ -9,10 +9,8 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "http://api.notion.com/v1/users/me"
-    }
-  ],
-    "headers": [
+      "destination": "https://api.notion.com/v1/users/me",
+        "headers": [
     {
       "source": "/(.*)",
       "headers": [
@@ -23,4 +21,7 @@
       ]
     }
   ]
+    }
+  ],
+    
 }
