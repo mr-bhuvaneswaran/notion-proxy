@@ -6,22 +6,21 @@
             "use": "@vercel/node"
         }
     ],
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "https://api.notion.com/v1/users/me",
-        "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
+    "rewrites": [
         {
-          "key": "Authorization",
-          "value": "Bearer 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"
+            "source": "/api/:path*",
+            "destination": "https://api.notion.com/v1/users/me",
+            "headers": [
+                {
+                    "source": "/(.*)",
+                    "headers": [
+                        {
+                            "key": "Authorization",
+                            "value": "Bearer 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"
+                        }
+                    ]
+                }
+            ]
         }
-      ]
-    }
-  ]
-    }
-  ],
-    
+    ]
 }
