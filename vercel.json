@@ -9,18 +9,18 @@
     "rewrites": [
         {
             "source": "/api/:path*",
-            "destination": "https://api.notion.com/v1/users/me",
+            "destination": "https://api.notion.com/v1/users/me"
         }
     ],
     "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
                 {
-                    "source": "/(.*)",
-                    "headers": [
-                        {
-                            "key": "Authorization",
-                            "value": "Bearer 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"
-                        }
-                    ]
+                    "key": "Authorization",
+                    "value": "Bearer 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"
                 }
             ]
+        }
+    ]
 }
