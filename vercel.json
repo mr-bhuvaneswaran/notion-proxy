@@ -10,7 +10,9 @@
         {
             "source": "/api/:path*",
             "destination": "https://api.notion.com/v1/users/me",
-            "headers": [
+        }
+    ],
+    "headers": [
                 {
                     "source": "/(.*)",
                     "headers": [
@@ -21,6 +23,4 @@
                     ]
                 }
             ]
-        }
-    ]
 }
