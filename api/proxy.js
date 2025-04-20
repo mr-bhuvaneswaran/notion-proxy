@@ -1,42 +1,42 @@
-const axios = require('axios');
-
 module.exports = async (req, res) => {
   const NOTION_TOKEN = process.env.NOTION_TOKEN;
   const NOTION_VERSION = '2022-06-28';
 
-  const { method, url: incomingPath, body, headers: incomingHeaders } = req;
+  const { method, url: incomingPath, body } = req;
 
-  // Strip `/api/proxy.js` from the beginning of the request path
-  const notionPath = incomingPath.replace(/^\/api/, '') || '/';
-  const targetUrl = notionPath;
+  // Clean the path: strip "/api" from beginning
+  const notionPath = incomingPath.replace(/^\\/api/, '') || '/';
+  const targetUrl = `https://api.notion.com${notionPath}`;
 
   console.log("Proxying to:", targetUrl);
-console.log("body to:", body);
-console.log("NOTION_TOKEN to:", NOTION_TOKEN);
-
+  console.log("Body to:", body);
+  console.log("NOTION_TOKEN to:", NOTION_TOKEN);
 
   try {
-    const response = await axios({
+    const fetchOptions = {
       method,
-      url: targetUrl,
       headers: {
         'Authorization': `Bearer ${NOTION_TOKEN}`,
         'Notion-Version': NOTION_VERSION,
-        'Content-Type': 'application/json',
-        ...incomingHeaders
-      },
-      data: body
-    });
+        'Content-Type': 'application/json'
+      }
+    };
 
-    console.log("response to:", response.data);
+    if (method !== 'GET' && method !== 'HEAD') {
+      fetchOptions.body = JSON.stringify(body);
+    }
 
+    const response = await fetch(targetUrl, fetchOptions);
+    const result = await response.json();
 
-    res.status(response.status).json(response.data);
+    console.log("Response from Notion:", result);
+
+    res.status(response.status).json(result);
   } catch (error) {
-    console.error(error?.response?.data || error.message);
-    res.status(error?.response?.status || 500).json({
+    console.error("Proxy Error:", error);
+    res.status(500).json({
       error: 'Proxy error',
-      detail: error?.response?.data || error.message
+      detail: error.message
     });
   }
 };
